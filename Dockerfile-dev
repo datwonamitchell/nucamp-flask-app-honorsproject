@@ -1,0 +1,11 @@
+# Our docker-compose file uses Dockerfile-dev instead of Dockerfile
+FROM python:3.7
+LABEL maintainer "Datwon A. Mitchell <datwonamitchell@outlook.com>"
+
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+ENTRYPOINT [ "/app/scripts/docker_script.sh" ]
+
+ENV FLASK_ENV=docker
+EXPOSE 5000
